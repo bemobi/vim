@@ -1,23 +1,21 @@
 "------------------------------------------------------------------------------
-" NERDTree
+" Plug 'scrooloose/nerdtree'
 "------------------------------------------------------------------------------
 
 " General properties
-let NERDTreeDirArrows=1
-let NERDTreeMinimalUI=1
-let NERDTreeIgnore=['\.o$', '\.pyc$', '\.php\~$']
-let NERDTreeWinSize = 35
-
-" Make sure that when NT root is changed, Vim's pwd is also updated
-let NERDTreeChDirMode = 2
-let NERDTreeShowLineNumbers = 1
-let NERDTreeAutoCenter = 1
+let g:NERDTreeChDirMode=2
+let g:NERDTreeIgnore=['\.rbc$', '\~$', '\.pyc$', '\.db$', '\.sqlite$', '__pycache__']
+let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
+let g:NERDTreeShowBookmarks=1
+let g:NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$', '\.bak$', '\~$']
+let g:NERDTreeWinSize = 31
+let g:nerdtree_tabs_focus_on_files=1
 
 " Open NERDTree on startup, when no file has been specified
 autocmd VimEnter * if !argc() | NERDTree | endif
 
-" Locate file in hierarchy quickly
-map <leader>T :NERDTreeFind<cr>
+" F2 toogles TabBar
+nmap <F2> :NERDTreeToggle<CR>
 
-" Toogle on/off
-nmap <leader>o :NERDTreeToggle<cr>
+" LF finds the current file in the tree
+nmap LF :NERDTreeFind<CR>

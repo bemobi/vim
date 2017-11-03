@@ -8,6 +8,9 @@ START     := $(BASE)/start
 
 install: vim-plug .vimrc start plugins
 
+clean:
+	@rm -f $(START) $(VIMRC_OUT)
+
 vim-plug:
 	@[ -f $(VIMPLUG) ] || \
 		curl -sfLo $(VIMPLUG) --create-dirs \
@@ -17,10 +20,13 @@ vim-plug:
 .vimrc:
 	@echo set runtimepath+="$(BASE)" > "$(VIMRC_OUT)"
 	@cat $(VIMRC_IN)/basic.vim >> "$(VIMRC_OUT)"
+	@cat $(VIMRC_IN)/basic-*.vim >> "$(VIMRC_OUT)"
 	@echo "call plug#begin('$(PLUGGED)')" >> "$(VIMRC_OUT)"
 	@cat $(VIMRC_IN)/plug.vim >> "$(VIMRC_OUT)" 
 	@echo 'call plug#end()' >> "$(VIMRC_OUT)"
 	@cat $(VIMRC_IN)/plug-*.vim >> "$(VIMRC_OUT)"
+	@cat $(VIMRC_IN)/theme.vim >> "$(VIMRC_OUT)"
+	@cat $(VIMRC_IN)/local.vim >> "$(VIMRC_OUT)"
 
 start:
 	@echo '#!/bin/sh' > $(START)
