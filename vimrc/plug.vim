@@ -1,0 +1,10 @@
+Plug 'Shougo/neocomplete.vim'
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+Plug 'airblade/vim-gitgutter'
+Plug 'fatih/vim-go', { 'tag': '*' }
+Plug 'jiangmiao/auto-pairs'
+Plug 'junegunn/vim-easy-align'
+Plug 'majutsushi/tagbar'
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/syntastic'
+Plug 'tpope/vim-fugitive'
