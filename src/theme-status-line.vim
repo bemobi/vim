@@ -1,20 +1,20 @@
 "------------------------------------------------------------------------------
-" Status line
+" Theme - Status line
 "------------------------------------------------------------------------------
 
 set laststatus=2
 
 let s:modes = {
-      \ 'n': 'NORMAL', 
-      \ 'i': 'INSERT', 
-      \ 'R': 'REPLACE', 
-      \ 'v': 'VISUAL', 
-      \ 'V': 'V-LINE', 
+      \ 'n': 'NORMAL',
+      \ 'i': 'INSERT',
+      \ 'R': 'REPLACE',
+      \ 'v': 'VISUAL',
+      \ 'V': 'V-LINE',
       \ "\<C-v>": 'V-BLOCK',
       \ 'c': 'COMMAND',
-      \ 's': 'SELECT', 
-      \ 'S': 'S-LINE', 
-      \ "\<C-s>": 'S-BLOCK', 
+      \ 's': 'SELECT',
+      \ 'S': 'S-LINE',
+      \ "\<C-s>": 'S-BLOCK',
       \ 't': 'TERMINAL'
       \}
 
@@ -65,7 +65,7 @@ set statusline=
 
 " mode with custom colors
 set statusline+=%#myModeColor#
-set statusline+=%{StatusLineMode()}               
+set statusline+=%{StatusLineMode()}
 set statusline+=%*
 
 " left information bar (after mode)

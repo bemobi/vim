@@ -1,8 +1,12 @@
 "------------------------------------------------------------------------------
-" Theme
+" Theme - Colors
 "------------------------------------------------------------------------------
 
-colorscheme brogrammer
+try
+  colorscheme brogrammer
+catch
+endtry
+
 set background=dark
 
 " Set extra options when running in GUI mode

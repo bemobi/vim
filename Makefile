@@ -1,41 +1,44 @@
-INSTALL_DIR := $(HOME)/.vim
-INSTALL_RC  := $(HOME)/.vimrc
+VIM_DIR  := $(HOME)/.vim
+VIMRC    := $(HOME)/.vimrc
+AUTOLOAD := $(VIM_DIR)/autoload
+PLUGGED  := $(VIM_DIR)/plugged
+VIM_PLUG := $(AUTOLOAD)/plug.vim
 
-BASE      := $(abspath $(dir $(lastword $(MAKEFILE_LIST))))
-VIMRC_IN  := $(BASE)/vimrc
-VIMRC_OUT := $(BASE)/.vimrc
-AUTOLOAD  := $(BASE)/autoload
-PLUGGED   := $(BASE)/plugged
+BASE := $(abspath $(dir $(lastword $(MAKEFILE_LIST))))
+SRC  := $(BASE)/src
 
-VIMPLUG := $(AUTOLOAD)/plug.vim
+install: basic vim-plug plugins | $(VIM_DIR)
+	@echo set runtimepath+="$(VIM_DIR)" > "$(VIMRC)"
+	@cat $(SRC)/basic.vim >> "$(VIMRC)"
+	@cat $(SRC)/basic-*.vim >> "$(VIMRC)"
+	@echo "call plug#begin('$(PLUGGED)')" >> "$(VIMRC)"
+	@cat $(SRC)/plug.vim >> "$(VIMRC)"
+	@echo 'call plug#end()' >> "$(VIMRC)"
+	@cat $(SRC)/plug-*.vim >> "$(VIMRC)"
+	@cat $(SRC)/theme-*.vim >> "$(VIMRC)"
+	@cat $(SRC)/local.vim >> "$(VIMRC)"
 
-build: vim-plug .vimrc plugins
+$(VIM_DIR):
+	@mkdir -p $(VIM_DIR)
 
-clean:
-	@rm -f $(VIMRC_OUT)
-
-install: clean build
-	@rm -rf $(INSTALL_DIR)
-	@mkdir -p $(INSTALL_DIR)
-	@cp -r $(AUTOLOAD) $(PLUGGED) $(INSTALL_DIR)
-	@cp $(VIMRC_OUT) $(INSTALL_RC)
+basic:
+	@echo set runtimepath+="$(VIM_DIR)" > "$(VIMRC)"
+	@cat $(SRC)/basic.vim >> "$(VIMRC)"
+	@cat $(SRC)/basic-*.vim >> "$(VIMRC)"
+	@echo "call plug#begin('$(PLUGGED)')" >> "$(VIMRC)"
+	@cat $(SRC)/plug.vim >> "$(VIMRC)"
+	@echo 'call plug#end()' >> "$(VIMRC)"
 
 vim-plug:
-	@[ -f $(VIMPLUG) ] || \
-		curl -sfLo $(VIMPLUG) --create-dirs \
+	@[ -f $(VIM_PLUG) ] || \
+		curl -sfLo $(VIM_PLUG) --create-dirs \
 			https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	@mkdir -p $(PLUGGED)
 
-.vimrc:
-	@echo set runtimepath+="$(BASE)" > "$(VIMRC_OUT)"
-	@cat $(VIMRC_IN)/basic.vim >> "$(VIMRC_OUT)"
-	@cat $(VIMRC_IN)/basic-*.vim >> "$(VIMRC_OUT)"
-	@echo "call plug#begin('$(PLUGGED)')" >> "$(VIMRC_OUT)"
-	@cat $(VIMRC_IN)/plug.vim >> "$(VIMRC_OUT)"
-	@echo 'call plug#end()' >> "$(VIMRC_OUT)"
-	@cat $(VIMRC_IN)/plug-*.vim >> "$(VIMRC_OUT)"
-	@cat $(VIMRC_IN)/theme.vim >> "$(VIMRC_OUT)"
-	@cat $(VIMRC_IN)/local.vim >> "$(VIMRC_OUT)"
-
 plugins:
-	@vim -u $(VIMRC_OUT) +PlugInstall +GoInstallBinaries +qall
+	@which nvim > /dev/null 2>&1 \
+		&& nvim -V0 -u $(VIMRC) +PlugInstall +GoInstallBinaries +qall \
+		|| vim -V0 -u $(VIMRC) +PlugInstall +GoInstallBinaries +qall
+
+clean:
+	@rm -rf $(VIM_DIR) $(VIMRC)
