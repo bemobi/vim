@@ -7,7 +7,7 @@ VIM_PLUG := $(AUTOLOAD)/plug.vim
 BASE := $(abspath $(dir $(lastword $(MAKEFILE_LIST))))
 SRC  := $(BASE)/src
 
-install: basic vim-plug plugins | $(VIM_DIR)
+install: basic
 	@echo set runtimepath+="$(VIM_DIR)" > "$(VIMRC)"
 	@cat $(SRC)/basic.vim >> "$(VIMRC)"
 	@cat $(SRC)/basic-*.vim >> "$(VIMRC)"
@@ -18,10 +18,9 @@ install: basic vim-plug plugins | $(VIM_DIR)
 	@cat $(SRC)/theme-*.vim >> "$(VIMRC)"
 	@cat $(SRC)/local.vim >> "$(VIMRC)"
 
-$(VIM_DIR):
-	@mkdir -p $(VIM_DIR)
+basic: basic-vimrc vim-plug plugins | $(VIM_DIR)
 
-basic:
+basic-vimrc:
 	@echo set runtimepath+="$(VIM_DIR)" > "$(VIMRC)"
 	@cat $(SRC)/basic.vim >> "$(VIMRC)"
 	@cat $(SRC)/basic-*.vim >> "$(VIMRC)"
@@ -39,6 +38,9 @@ plugins:
 	@which nvim > /dev/null 2>&1 \
 		&& nvim -V0 -u $(VIMRC) +PlugInstall +GoInstallBinaries +qall \
 		|| vim -V0 -u $(VIMRC) +PlugInstall +GoInstallBinaries +qall
+
+$(VIM_DIR):
+	@mkdir -p $(VIM_DIR)
 
 clean:
 	@rm -rf $(VIM_DIR) $(VIMRC)
