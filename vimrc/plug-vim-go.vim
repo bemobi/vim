@@ -8,7 +8,7 @@ let g:go_def_mode = "guru"
 let g:go_echo_command_info = 1
 let g:go_fmt_command = "goimports"
 let g:go_fmt_fail_silently = 0
-let g:go_gocode_autobuild = 0
+let g:go_gocode_autobuild = 1
 let g:go_gocode_unimported_packages = 1
 let g:go_highlight_array_whitespace_error = 0
 let g:go_highlight_build_constraints = 1
@@ -16,8 +16,8 @@ let g:go_highlight_extra_types = 0
 let g:go_highlight_space_tab_error = 0
 let g:go_highlight_trailing_whitespace_error = 0
 let g:go_highlight_types = 0
-let g:go_info_mode = "guru"
-let g:go_list_type = "quickfix"
+let g:go_info_mode = "gocode"
+let g:go_list_type = ""
 let g:go_modifytags_transform = 'camelcase'
 
 " run :GoBuild or :GoTestCompile based on the go file
