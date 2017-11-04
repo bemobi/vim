@@ -1,15 +1,23 @@
-BASE      := $(abspath $(dir $(lastword $(MAKEFILE_LIST))))
+INSTALL_DIR := $(HOME)/.vim
+BASE        := $(abspath $(dir $(lastword $(MAKEFILE_LIST))))
 
 VIMRC_IN  := $(BASE)/vimrc
 VIMRC_OUT := $(BASE)/.vimrc
-VIMPLUG   := $(BASE)/autoload/plug.vim
+AUTOLOAD  := $(BASE)/autoload
 PLUGGED   := $(BASE)/plugged
-START     := $(BASE)/start
 
-install: vim-plug .vimrc start plugins
+VIMPLUG := $(AUTOLOAD)/plug.vim
+
+build: vim-plug .vimrc plugins
 
 clean:
-	@rm -f $(START) $(VIMRC_OUT)
+	@rm -f $(VIMRC_OUT)
+
+install: clean build
+	@rm -rf $(INSTALL_DIR)
+	@mkdir -p $(INSTALL_DIR)
+	@cp -r $(AUTOLOAD) $(PLUGGED) $(INSTALL_DIR)
+	@cp $(VIMRC_OUT) ~/.vimrc
 
 vim-plug:
 	@[ -f $(VIMPLUG) ] || \
@@ -28,10 +36,5 @@ vim-plug:
 	@cat $(VIMRC_IN)/theme.vim >> "$(VIMRC_OUT)"
 	@cat $(VIMRC_IN)/local.vim >> "$(VIMRC_OUT)"
 
-start:
-	@echo '#!/bin/sh' > $(START)
-	@echo 'vim -u $(VIMRC_OUT) $$@' >> $(START)
-	@chmod +x $(START)
-
 plugins:
-	@./start +PlugInstall +GoInstallBinaries +qall
+	@vim -u $(VIMRC_OUT) +PlugInstall +GoInstallBinaries +qall
