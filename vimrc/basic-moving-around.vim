@@ -5,6 +5,13 @@
 " Make sure that coursor is always vertically centered on j/k moves
 set so=999
 
+" Keep your cursor centered vertically on the screen
+augroup VCenterCursor
+  au!
+  au BufEnter,WinEnter,WinNew,VimResized *,*.*
+        \ let &scrolloff=winheight(win_getid())/2
+augroup END
+
 " Treat long lines as break lines 
 " (useful when moving around in them)
 map j gj
