@@ -3,8 +3,9 @@
 "------------------------------------------------------------------------------
 
 try
-  colorscheme brogrammer
+  colorscheme molokai
 catch
+  colorscheme elflord
 endtry
 
 set background=dark
