@@ -37,8 +37,6 @@ set number
 " Show (partial) commands (or size of selection in Visual mode) in the status line
 set showcmd
 
-" A buffer becomes hidden when it is abandoned
-set hid
 
 " Configure backspace so it acts as it should act
 set backspace=eol,start,indent

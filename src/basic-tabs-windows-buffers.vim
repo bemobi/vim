@@ -14,3 +14,6 @@ augroup quickfix
     autocmd!
     autocmd FileType qf setlocal wrap
 augroup END
+
+" Remove 'set hidden'
+set nohidden
