@@ -1,6 +1,7 @@
 INSTALL_DIR := $(HOME)/.vim
-BASE        := $(abspath $(dir $(lastword $(MAKEFILE_LIST))))
+INSTALL_RC  := $(HOME)/.vimrc
 
+BASE      := $(abspath $(dir $(lastword $(MAKEFILE_LIST))))
 VIMRC_IN  := $(BASE)/vimrc
 VIMRC_OUT := $(BASE)/.vimrc
 AUTOLOAD  := $(BASE)/autoload
@@ -17,7 +18,7 @@ install: clean build
 	@rm -rf $(INSTALL_DIR)
 	@mkdir -p $(INSTALL_DIR)
 	@cp -r $(AUTOLOAD) $(PLUGGED) $(INSTALL_DIR)
-	@cp $(VIMRC_OUT) ~/.vimrc
+	@cp $(VIMRC_OUT) $(INSTALL_RC)
 
 vim-plug:
 	@[ -f $(VIMPLUG) ] || \
@@ -30,7 +31,7 @@ vim-plug:
 	@cat $(VIMRC_IN)/basic.vim >> "$(VIMRC_OUT)"
 	@cat $(VIMRC_IN)/basic-*.vim >> "$(VIMRC_OUT)"
 	@echo "call plug#begin('$(PLUGGED)')" >> "$(VIMRC_OUT)"
-	@cat $(VIMRC_IN)/plug.vim >> "$(VIMRC_OUT)" 
+	@cat $(VIMRC_IN)/plug.vim >> "$(VIMRC_OUT)"
 	@echo 'call plug#end()' >> "$(VIMRC_OUT)"
 	@cat $(VIMRC_IN)/plug-*.vim >> "$(VIMRC_OUT)"
 	@cat $(VIMRC_IN)/theme.vim >> "$(VIMRC_OUT)"
