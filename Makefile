@@ -7,6 +7,12 @@ VIM_PLUG := $(AUTOLOAD)/plug.vim
 BASE := $(abspath $(dir $(lastword $(MAKEFILE_LIST))))
 SRC  := $(BASE)/src
 
+NVIM := $(shell command -v nvim 2> /dev/null)
+VIM  := vim -u $(VIMRC)
+ifdef NVIM
+VIM := $(NVIM) -u $(VIMRC)
+endif
+
 install: basic
 	@echo set runtimepath+="$(VIM_DIR)" > "$(VIMRC)"
 	@cat $(SRC)/basic.vim >> "$(VIMRC)"
@@ -35,9 +41,8 @@ vim-plug:
 	@mkdir -p $(PLUGGED)
 
 plugins:
-	@which nvim > /dev/null 2>&1 \
-		&& nvim -V0 -u $(VIMRC) +PlugInstall +GoInstallBinaries +qall \
-		|| vim -V0 -u $(VIMRC) +PlugInstall +GoInstallBinaries +qall
+	@$(VIM) +PlugInstall +qall
+	@$(VIM) +GoInstallBinaries +qall
 
 $(VIM_DIR):
 	@mkdir -p $(VIM_DIR)
