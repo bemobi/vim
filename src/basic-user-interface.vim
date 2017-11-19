@@ -56,11 +56,9 @@ set lazyredraw
 " For regular expressions turn magic on
 set magic
 
-" Show matching brackets when text indicator is over them
-set showmatch
-
-" How many tenths of a second to blink when matching brackets
-set mat=2
+" Do not show matching brackets when text indicator is over them
+let loaded_matchparen = 1
+set noshowmatch
 
 " No annoying sound on errors
 set noerrorbells
