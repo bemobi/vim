@@ -5,7 +5,6 @@ Plug 'Raimondi/delimitMate'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'airblade/vim-gitgutter'
 Plug 'chemzqm/vim-jsx-improve'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'ekalinin/Dockerfile.vim', {'for' : 'Dockerfile'}
 Plug 'elzr/vim-json', {'for' : 'json'}
 Plug 'fatih/vim-go', { 'tag': '*' }

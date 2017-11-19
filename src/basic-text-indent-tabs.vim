@@ -26,7 +26,3 @@ set nowrap "Don't Wrap lines (it is stupid)
 " Indent/unindent highlighted block (and maintain highlight)
 vnoremap <Tab>    >gv
 vnoremap <S-Tab>  <gv
-
-
-" Ctrl+P to duplicate visual selection
-vmap <C-p> y'>p
