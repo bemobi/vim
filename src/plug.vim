@@ -4,8 +4,9 @@ Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'Raimondi/delimitMate'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'airblade/vim-gitgutter'
+Plug 'chase/vim-ansible-yaml'
 Plug 'chemzqm/vim-jsx-improve'
-Plug 'ekalinin/Dockerfile.vim', {'for' : 'Dockerfile'}
+Plug 'ekalinin/Dockerfile.vim'
 Plug 'elzr/vim-json', {'for' : 'json'}
 Plug 'fatih/vim-go', { 'tag': '*' }
 Plug 'fatih/vim-nginx', {'for' : 'nginx'}
