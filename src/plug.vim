@@ -11,6 +11,7 @@ Plug 'fatih/vim-go', { 'tag': '*' }
 Plug 'fatih/vim-nginx', {'for' : 'nginx'}
 Plug 'flazz/vim-colorschemes'
 Plug 'jiangmiao/auto-pairs'
+Plug 'junegunn/gv.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'majutsushi/tagbar'
 Plug 'mileszs/ack.vim'
