@@ -2,13 +2,14 @@
 " Theme - Colors
 "------------------------------------------------------------------------------
 
+set background=dark
+
 try
-  colorscheme molokai
+  colorscheme PaperColor
 catch
   colorscheme elflord
 endtry
 
-set background=dark
 
 " Set extra options when running in GUI mode
 if has("gui_running")
