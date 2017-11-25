@@ -20,9 +20,9 @@ map <Leader>w :w<CR>
 imap <Leader>w <ESC>:w<CR>
 vmap <Leader>w <ESC><ESC>:w<CR>
 
-" :WW sudo saves the file
+" :SudoW sudo saves the file
 " (useful for handling the permission-denied error)
-command WW w !sudo tee % > /dev/null
+command SudoW w !sudo tee % > /dev/null
 
 " Turn backup off, since most stuff is in SVN, git et.c anyway...
 set nobackup
