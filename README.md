@@ -1,4 +1,4 @@
-# Bemobi VIM
+# VIM Setup
 
 ## Requirements
 

@@ -6,7 +6,6 @@ Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'airblade/vim-gitgutter'
 Plug 'bronson/vim-visual-star-search'
 Plug 'chase/vim-ansible-yaml'
-Plug 'chemzqm/vim-jsx-improve'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'elzr/vim-json', {'for' : 'json'}
 Plug 'fatih/vim-go', { 'tag': '*' }
@@ -18,11 +17,7 @@ Plug 'junegunn/vim-easy-align'
 Plug 'majutsushi/tagbar'
 Plug 'matze/vim-move'
 Plug 'mileszs/ack.vim'
-Plug 'mxw/vim-jsx'
-Plug 'othree/html5.vim'
-Plug 'pangloss/vim-javascript'
 Plug 'scrooloose/nerdtree'
-Plug 'scrooloose/syntastic'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tmhedberg/matchit'
 Plug 'tpope/vim-abolish'
@@ -30,6 +25,13 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
+
+Plug 'othree/html5.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'mattn/emmet-vim'
+Plug 'w0rp/ale'
+Plug 'skywind3000/asyncrun.vim'
 
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
