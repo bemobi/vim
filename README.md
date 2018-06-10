@@ -9,3 +9,12 @@
 You can install neovim with python3 using pip:
 
     pip3 install neovim
+
+## Installation
+
+[![asciicast](https://asciinema.org/a/SBNwL4zn41m9g3LCxd7TzdyyC.png)](https://asciinema.org/a/SBNwL4zn41m9g3LCxd7TzdyyC)
+
+
+## Demo (React-Native)
+
+[![asciicast](https://asciinema.org/a/GqJaVBJjdPotttwJG5f4HhKjc.png)](https://asciinema.org/a/GqJaVBJjdPotttwJG5f4HhKjc)
