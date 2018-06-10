@@ -8,7 +8,7 @@ Plug 'bronson/vim-visual-star-search'
 Plug 'chase/vim-ansible-yaml'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'elzr/vim-json', {'for' : 'json'}
-Plug 'fatih/vim-go', { 'tag': '*' }
+Plug 'fatih/vim-go', {'do': ':GoUpdateBinaries'}
 Plug 'fatih/vim-nginx', {'for' : 'nginx'}
 Plug 'flazz/vim-colorschemes'
 Plug 'jiangmiao/auto-pairs'
@@ -31,7 +31,6 @@ Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'mattn/emmet-vim'
 Plug 'w0rp/ale'
-Plug 'skywind3000/asyncrun.vim'
 
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -42,3 +41,5 @@ else
 endif
 Plug 'zchee/deoplete-go', { 'do': 'make'}
 Plug 'Shougo/echodoc.vim'
+
+Plug 'vim-airline/vim-airline'
