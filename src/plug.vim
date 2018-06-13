@@ -43,3 +43,5 @@ Plug 'zchee/deoplete-go', { 'do': 'make'}
 Plug 'Shougo/echodoc.vim'
 
 Plug 'vim-airline/vim-airline'
+
+Plug 'kien/ctrlp.vim'
